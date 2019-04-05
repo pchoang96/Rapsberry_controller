@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(robo_contro)
+
+find_package(catkin REQUIRED COMPONENTS
+  geometry_msgs
+  roscpp
+  rospy
+)
+
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES robo_contro
+#  CATKIN_DEPENDS geometry_msgs roscpp rospy
+#  DEPENDS system_lib
+)
+include_directories(
+
+  ${catkin_INCLUDE_DIRS}/include
+)
+add_executable(controler src/control_pid.cpp)
+target_link_libraries(controler ${catkin_LIBRARIES})
+add_dependencies(controler robo_contro_generate_messages_cpp)
